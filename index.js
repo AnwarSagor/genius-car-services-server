@@ -28,8 +28,6 @@ function verifyJWT(req, res, next) {
     })
 }
 
-
-
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.tkesu.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
@@ -109,10 +107,13 @@ async function run() {
 
 run().catch(console.dir);
 
-
 app.get('/', (req, res) => {
     res.send('Running Genius Server')
 });
+
+app.get('/hero', (req, res) => {
+    res.send('Hero meets hero ku')
+})
 
 app.listen(port, () => {
     console.log('Listening to port', port)
